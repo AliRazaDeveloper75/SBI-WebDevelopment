@@ -1,10 +1,9 @@
-*, body {
+*,
+body {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
-
-
-/* na */
 
 /* navbar */
 .navbar {
@@ -42,18 +41,92 @@
   border-radius: 25px;
 }
 
-
-.navbar .right button:hover{
-   background-color: aqua;
-  color: black;   
+.navbar .right button:hover {
+  background-color: aqua;
+  color: black;
+}
+/* hero section styles */
+.hero-sec {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  justify-content: space-between;
+  padding: 5px;
+  /* margin: 5px; */
+  background-color: beige;
+  align-items: center;
+}
+.hero-sec .sec-left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 5px;
+}
+.hero-sec .sec-left .heading {
+  font-size: 38px;
+  color: black;
+  text-transform: capitalize;
+  font-weight: 200;
+  line-height: 45px;
+}
+.hero-sec .sec-left .detail {
+  font-size: 20px;
+  text-transform: capitalize;
+}
+.hero-sec .sec-left .a-tag-btn{
+    font-size: 20px;
+  padding: 20px 0;
+  margin: 20px 0;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  border: none;
+  transition: 0.5s;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  width: 30%;
+  border-radius: 20px;
+}
+.hero-sec .sec-left .a-tag-btn:hover{
+  background-color: white;
+  color: black;
 }
 
 
+.hero-sec .sec-left .h-btn {
+  font-size: 20px;
+  padding: 20px 0;
+  margin: 20px 0;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  border: none;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.hero-sec .sec-left .h-btn:hover{
+  background-color: white;
+  color: black;
+}
+
+
+
+.hero-sec .sec-right{
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* cards  */
 .cards {
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: 5px;
+  padding: 15px 5px;
   gap: 5px;
 }
 .cards .card {
@@ -78,17 +151,31 @@
   padding-left: 5px;
 }
 
-.cards .card .btn{
-    padding: 5px;
-    margin: 5px;
-    color: white;
-    background-color: blue;
-    border: 1px solid gray;
-    cursor: pointer;
-    transition: 0.5s;
+.cards .card .btn {
+  padding: 5px;
+  margin: 5px;
+  color: white;
+  background-color: blue;
+  border: 1px solid gray;
+  cursor: pointer;
+  transition: 0.5s;
+  width: 97%;
 }
 
-.cards .card .btn:hover{
-    color: blue;
-    background-color: black;
+.cards .card .btn:hover {
+  color: blue;
+  background-color: black;
+}
+
+
+/* footer sect */
+.footer-sec{
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: bold;
+  padding: 20px 0;
+  background-color: black;
+  color: white;
 }
