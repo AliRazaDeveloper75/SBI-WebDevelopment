@@ -148,40 +148,39 @@ body {
   gap: 10px;
 }
 
-.hero-sec .sec-right .c-form .input-flelds .input-div{
+.hero-sec .sec-right .c-form .input-flelds .input-div {
   display: flex;
   flex-direction: column;
- 
 }
 
-.hero-sec .sec-right .c-form .input-flelds .input-div label{
+.hero-sec .sec-right .c-form .input-flelds .input-div label {
   font-size: 14px;
   text-transform: capitalize;
 }
-.hero-sec .sec-right .c-form .input-flelds .input-div input{
+.hero-sec .sec-right .c-form .input-flelds .input-div input {
   padding: 4px 0;
   width: 100%;
 }
-.hero-sec .sec-right .c-form .input-flelds .input-div input{
+.hero-sec .sec-right .c-form .input-flelds .input-div input {
   padding: 4px 0;
   width: 100%;
 }
-.hero-sec .sec-right .c-form .input-flelds .input-div .msg{
+.hero-sec .sec-right .c-form .input-flelds .input-div .msg {
   padding: 4px 0;
   width: 100%;
   height: 100px;
 }
-.hero-sec .sec-right .c-form .input-flelds .input-div button{
+.hero-sec .sec-right .c-form .input-flelds .input-div button {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
   transition: 0.5s;
   background-color: white;
   color: black;
-  border: 2px solid black ;
+  border: 2px solid black;
   font-size: 16px;
 }
-.hero-sec .sec-right .c-form .input-flelds .input-div button:hover{
+.hero-sec .sec-right .c-form .input-flelds .input-div button:hover {
   /* padding: 4px 0;
   width: 100%; */
   background-color: blue;
@@ -234,6 +233,56 @@ body {
 .cards .card .btn:hover {
   color: blue;
   background-color: black;
+}
+/* contact section */
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: #8a5ef0; */
+  /* background-image: url("mediafiles/c.jpg"); */
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/005/263/636/small/contact-us-concept-icons-such-as-mobile-phone-e-mail-address-chat-global-communication-on-dark-blue-background-for-presentation-web-banner-article-business-and-network-connection-and-company-free-vector.jpg");
+  /* width: 100%;
+  position: static;
+  object-fit: fill; */
+
+  color: white;
+  padding: 90px 0px;
+  align-items: center;
+  text-align: center;
+  gap: 25px;
+}
+
+.container h1{
+  font-size: 25px;
+  font-weight: 400;
+  color: white;
+}
+.container p{
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.container .sub-container{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.container .sub-container button{
+  padding: 20px 30px;
+  cursor: pointer;
+  background-color: white;
+  color: blue;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  transition: 0.5s;
+}
+
+.container .sub-container button:hover{
+    background-color: black;
+  color: white;
 }
 
 /* footer sect */
