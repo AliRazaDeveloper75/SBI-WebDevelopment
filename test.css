@@ -17,7 +17,6 @@ body {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-
   background-color: black;
 }
 .navbar .left {
@@ -47,10 +46,9 @@ body {
   border-radius: 25px;
 }
 
-
-.navbar .right button:hover{
-   background-color: aqua;
-  color: black;   
+.navbar .right button:hover {
+  background-color: aqua;
+  color: black;
 }
 
 /* cards */
