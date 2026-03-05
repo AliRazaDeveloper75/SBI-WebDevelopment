@@ -1,100 +1,264 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ auto image slider · left to right (pure CSS)</title>
+  <style>
+    /* === reset / base === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- link css file -->
-    <link rel="stylesheet" href="test.css" />
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- navbar -->
+    body {
+      background: linear-gradient(145deg, #11171f 0%, #1f2a35 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
 
-    <div class="navbar">
-      <div class="left">Logo</div>
-      <div class="right">
-        <button>Home</button>
-        <button>About</button>
-        <button>Services</button>
-        <button>Products</button>
-        <button>Contact</button>
+    /* === main slider postcard === */
+    .slider-container {
+      width: 900px;
+      max-width: 90vw;
+      background: #1e2e3f;
+      border-radius: 2.5rem;
+      padding: 2rem 1rem 2.5rem 1rem;
+      box-shadow: 0 30px 40px -15px rgba(0,0,0,0.8), inset 0 2px 5px rgba(255,255,240,0.1);
+      border: 1px solid #526b7e;
+    }
+
+    /* === elegant header / description === */
+    .slider-header {
+      text-align: center;
+      color: #deedfc;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .slider-header h2 {
+      font-weight: 400;
+      font-size: 1.9rem;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #fff1cf, #b7d9f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3rem;
+      filter: drop-shadow(0 4px 3px black);
+    }
+
+    .slider-header p {
+      font-size: 1rem;
+      color: #96b8d4;
+      border-bottom: 1px dashed #3b5568;
+      padding-bottom: 0.6rem;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    /* === THE ACTUAL SLIDER TRACK (endless left→right scroll) === */
+    .slider-track {
+      background: #14222e;
+      border-radius: 100px;
+      box-shadow: inset 0 8px 12px rgba(0,0,0,0.6), 0 5px 12px #04080c;
+      padding: 1.2rem 0;
+      border: 2px solid #3d5d78;
+      overflow: hidden;            /* hides the overflow – creates the sliding window */
+      position: relative;
+      width: 100%;
+    }
+
+    /* the moving strip of images – animation left→right */
+    .image-strip {
+      display: flex;
+      gap: 2rem;                   /* space between images */
+      width: fit-content;
+      animation: scrollLeftToRight 22s linear infinite;
+      /* 👆 infinite, smooth, auto */
+      padding-left: 1rem;           /* tiny leading pause – looks neat */
+    }
+
+    /* each image wrapper – consistent size + rounded elegance */
+    .slide-img {
+      flex: 0 0 auto;              /* prevent shrinking, keep original width */
+      width: 200px;
+      height: 140px;
+      background: #274152;          /* fallback */
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 25px -5px black, 0 0 0 2px #627e96 inset;
+      border: 2px solid #e2f0ff;
+      transition: box-shadow 0.2s;
+    }
+
+    /* images cover the box perfectly */
+    .slide-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;            /* keeps ratio, fills completely */
+      display: block;
+      pointer-events: none;         /* images don't block hover effects */
+    }
+
+    /* pause animation on hover (nice usability) */
+    .slider-track:hover .image-strip {
+      animation-play-state: paused;
+    }
+
+    /* subtle glow on hover for the hovered image */
+    .slide-img:hover {
+      box-shadow: 0 15px 30px 2px #a3ceff, 0 0 0 3px white inset;
+      transition: 0.15s;
+    }
+
+    /* === KEY ANIMATION – pure left to right endless scroll === */
+    @keyframes scrollLeftToRight {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* total width of 3 images: 3 * (200px + 2rem gap) - small offset */
+        /* 200*3 = 600px ; gap 2rem = 32px*2 = 64px → total strip width = 664px */
+        /* we want to move left so the third image arrives at start */
+        /* moving left by exactly the width of one set of 3 images = 664px */
+        transform: translateX(-664px);
+      }
+    }
+
+    /* add a subtle gradient mask at the edges (makes it fade slightly) */
+    .slider-track::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 70px;
+      background: linear-gradient(90deg, rgba(20,34,46,0) 0%, #14222e 90%);
+      pointer-events: none;
+      z-index: 10;
+      border-top-right-radius: 100px;
+      border-bottom-right-radius: 100px;
+    }
+
+    .slider-track::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 70px;
+      background: linear-gradient(270deg, rgba(20,34,46,0) 0%, #14222e 90%);
+      pointer-events: none;
+      z-index: 10;
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+    }
+
+    /* decorative direction hint (tiny arrows) */
+    .direction-hint {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-top: 0.8rem;
+      color: #6b8da8;
+      font-weight: 400;
+      font-size: 1rem;
+      align-items: center;
+    }
+
+    .direction-hint span {
+      background: #142a38;
+      padding: 0.2rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #50758f;
+      box-shadow: inset 0 1px 3px #b3daf5;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    /* move hint arrow */
+    .hint-arrow {
+      font-size: 1.6rem;
+      line-height: 1;
+      color: #bbdef5;
+      filter: drop-shadow(0 2px 3px black);
+    }
+
+    /* === responsive adjustments === */
+    @media (max-width: 700px) {
+      .slide-img {
+        width: 150px;
+        height: 100px;
+      }
+      .image-strip {
+        gap: 1.2rem;
+      }
+      @keyframes scrollLeftToRight {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-504px); } /* (150*3 + 1.2rem*2*16 ≈ 450 + 38.4 = 488.4 ~ 504 for safety) */
+      }
+    }
+
+    /* accessibility: reduce motion if needed */
+    @media (prefers-reduced-motion: reduce) {
+      .image-strip {
+        animation: none;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slider-container">
+    <div class="slider-header">
+      <h2>⫸ endless exposure ⫷</h2>
+      <p>automatic left → right · pure css scroll</p>
+    </div>
+
+    <!-- the slider track (the visible window) -->
+    <div class="slider-track">
+      <!-- image strip with 3 images repeated to create seamless loop -->
+      <div class="image-strip">
+        <!-- image 1 (original set) -->
+        <div class="slide-img">
+          <!-- using unsplash / loremflickr placeholder – but solid abstract image feel. 
+               we use gradient + text fallback? Better: reliable placeholder images from picsum -->
+          <img src="https://picsum.photos/id/1015/300/200" alt="mountain landscape">
+        </div>
+        <div class="slide-img">
+          <img src="https://picsum.photos/id/1043/300/200" alt="face portrait">
+        </div>
+        <div class="slide-img">
+          <img src="https://picsum.photos/id/106/300/200" alt="flower field">
+        </div>
+        <!-- second identical set for seamless loop – exactly same order -->
+        <div class="slide-img">
+          <img src="https://picsum.photos/id/1015/300/200" alt="mountain landscape">
+        </div>
+        <div class="slide-img">
+          <img src="https://picsum.photos/id/1043/300/200" alt="face portrait">
+        </div>
+        <div class="slide-img">
+          <img src="https://picsum.photos/id/106/300/200" alt="flower field">
+        </div>
+        <!-- end strip: the animation moves left exactly by 3 images, so the second set slides into view -->
       </div>
     </div>
 
-    <!-- cards list -->
-    <div class="cards">
-      <!-- card 01 -->
-      <div class="card">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVj_YnIPq2D3lv03O8rCGcTpUuBMDYseSvFw&s"
-        />
-
-        <div class="card-content">
-          <h1>Web Development Course</h1>
-          <p>
-            this is web development course. we make fullstack web application
-            with fully funcational and responsive.
-          </p>
-          <h2>RS 999/-</h2>
-          <button>buy now</button>
-        </div>
-      </div>
-      <!-- card 01 -->
-      <div class="card">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVj_YnIPq2D3lv03O8rCGcTpUuBMDYseSvFw&s"
-        />
-
-        <div class="card-content">
-          <h1>Web Development Course</h1>
-          <p>
-            this is web development course. we make fullstack web application
-            with fully funcational and responsive.
-          </p>
-          <h2>RS 999/-</h2>
-          <button>buy now</button>
-        </div>
-      </div>
-      <!-- card 01 -->
-      <div class="card">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVj_YnIPq2D3lv03O8rCGcTpUuBMDYseSvFw&s"
-        />
-
-        <div class="card-content">
-          <h1>Web Development Course</h1>
-          <p>
-            this is web development course. we make fullstack web application
-            with fully funcational and responsive.
-          </p>
-          <h2>RS 999/-</h2>
-          <button>buy now</button>
-        </div>
-      </div>
-      <!-- card 01 -->
-      <div class="card">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVj_YnIPq2D3lv03O8rCGcTpUuBMDYseSvFw&s"
-        />
-
-        <div class="card-content">
-          <h1>Web Development Course</h1>
-          <p>
-            this is web development course. we make fullstack web application
-            with fully funcational and responsive.
-          </p>
-          <h2>RS 999/-</h2>
-          <button>buy now</button>
-        </div>
-      </div>
+    <!-- direction hint + auto scrolling info -->
+    <div class="direction-hint">
+      <span>◀  left</span>
+      <span class="hint-arrow">⬅️ ➡️</span>
+      <span>right  ▶</span>
     </div>
-  </body>
+    <div style="text-align: center; margin-top: 0.9rem; color: #6f93af; font-size: 0.85rem; opacity: 0.8; border-top: 1px solid #25485f; padding-top: 0.7rem;">
+      ⏵ continuous auto-scroll · images by <span style="background:#1e3c4f; padding:0.2rem 0.8rem; border-radius: 30px;">picsum</span> · hover to pause
+    </div>
+  </div>
+</body>
 </html>

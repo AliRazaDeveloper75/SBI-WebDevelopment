@@ -7,6 +7,10 @@ body {
 
 /* navbar */
 .navbar {
+  position: sticky; /* Makes it sticky */
+  top: 0; /* Sticks to top */
+  z-index: 1000; 
+
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -45,9 +49,16 @@ body {
   border-radius: 25px;
 }
 
+.navbar .right button a{
+  text-decoration: none;
+  color: white;
+}
+.navbar .right button a:hover{
+  color: black;
+}
 .navbar .right button:hover {
   background-color: aqua;
-  color: black;
+  /* color: black; */
 }
 /* hero section styles */
 .hero-sec {
@@ -190,15 +201,218 @@ body {
   color: white;
   border: 2px solid blue;
 }
+
+/* slider  */
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  position: relative;
+
+  /* Animation */
+  animation: moveBox 3s infinite;
+}
+
+/* Keyframes Structure */
+
+/* === THE ACTUAL SLIDER TRACK (endless left→right scroll) === */
+.slider-track {
+  background: #14222e;
+  border-radius: 100px;
+  box-shadow:
+    inset 0 8px 12px rgba(0, 0, 0, 0.6),
+    0 5px 12px #04080c;
+  padding: 1.2rem 0;
+  border: 2px solid #3d5d78;
+  overflow: hidden; /* hides the overflow – creates the sliding window */
+  position: relative;
+  width: 100%;
+}
+
+/* the moving strip of images – animation left→right */
+.image-strip {
+  display: flex;
+  gap: 2rem; /* space between images */
+  width: fit-content;
+  animation: scrollLeftToRight 22s linear infinite;
+  /* 👆 infinite, smooth, auto */
+  padding-left: 1rem; /* tiny leading pause – looks neat */
+}
+
+/* each image wrapper – consistent size + rounded elegance */
+.slide-img {
+  flex: 0 0 auto; /* prevent shrinking, keep original width */
+  width: 200px;
+  height: 140px;
+  background: #274152; /* fallback */
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 25px -5px black,
+    0 0 0 2px #627e96 inset;
+  border: 2px solid #e2f0ff;
+  transition: box-shadow 0.2s;
+}
+
+/* images cover the box perfectly */
+.slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps ratio, fills completely */
+  display: block;
+  pointer-events: none; /* images don't block hover effects */
+}
+
+/* pause animation on hover (nice usability) */
+.slider-track:hover .image-strip {
+  animation-play-state: paused;
+}
+
+/* subtle glow on hover for the hovered image */
+.slide-img:hover {
+  box-shadow:
+    0 15px 30px 2px #a3ceff,
+    0 0 0 3px white inset;
+  transition: 0.15s;
+}
+
+/* === KEY ANIMATION – pure left to right endless scroll === */
+@keyframes scrollLeftToRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* total width of 3 images: 3 * (200px + 2rem gap) - small offset */
+    /* 200*3 = 600px ; gap 2rem = 32px*2 = 64px → total strip width = 664px */
+    /* we want to move left so the third image arrives at start */
+    /* moving left by exactly the width of one set of 3 images = 664px */
+    transform: translateX(-664px);
+  }
+}
+
+/* add a subtle gradient mask at the edges (makes it fade slightly) */
+.slider-track::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 70px;
+  background: linear-gradient(90deg, rgba(20, 34, 46, 0) 0%, #14222e 90%);
+  pointer-events: none;
+  z-index: 10;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.slider-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  background: linear-gradient(270deg, rgba(20, 34, 46, 0) 0%, #14222e 90%);
+  pointer-events: none;
+  z-index: 10;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+/* decorative direction hint (tiny arrows) */
+.direction-hint {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  margin-top: 0.8rem;
+  color: #6b8da8;
+  font-weight: 400;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.direction-hint span {
+  background: #142a38;
+  padding: 0.2rem 1.2rem;
+  border-radius: 60px;
+  border: 1px solid #50758f;
+  box-shadow: inset 0 1px 3px #b3daf5;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* move hint arrow */
+.hint-arrow {
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #bbdef5;
+  filter: drop-shadow(0 2px 3px black);
+}
+
+/* === responsive adjustments === */
+@media (max-width: 700px) {
+  .slide-img {
+    width: 150px;
+    height: 100px;
+  }
+  .image-strip {
+    gap: 1.2rem;
+  }
+  @keyframes scrollLeftToRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-504px);
+    } /* (150*3 + 1.2rem*2*16 ≈ 450 + 38.4 = 488.4 ~ 504 for safety) */
+  }
+}
+
+/* accessibility: reduce motion if needed */
+@media (prefers-reduced-motion: reduce) {
+  .image-strip {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+
+/* table css */
+.table-sec {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 15px;
+}
+.table-sec div h1 {
+  font-size: 35px;
+  color: blue;
+}
+.table-sec table tr th {
+  border: 2px solid black;
+  background-color: white;
+  padding: 10px 30px;
+}
+.table-sec table tr {
+  text-align: center;
+}
+.table-sec table tr td {
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px 30px;
+}
+
 /* grid  */
-.g-sec{
+.g-sec {
   display: grid;
   /* grid-template-columns: 1fr  1fr; */
   grid-template-columns: repeat(8, 1fr);
   gap: 5px;
-
 }
-.g-sec .c-one{
+
+.g-sec .c-one {
   display: flex;
   justify-content: center;
   background-color: black;
@@ -306,26 +520,25 @@ body {
   color: white;
 }
 
-
 /* yt section */
-.yt-sec{
+.yt-sec {
   display: flex;
   flex-direction: row;
   width: 100%;
   /* height: 30vh; */
   align-items: center;
   gap: 25px;
-  background-color: yellowgreen ;
+  background-color: yellowgreen;
 }
-.yt-sec .cont{
+.yt-sec .cont {
   width: 50%;
   padding: 25px;
 }
-.yt-sec .vid{
+.yt-sec .vid {
   width: 50%;
   padding: 25px;
 }
-.yt-sec .vid .yt-vid{
+.yt-sec .vid .yt-vid {
   width: 100%;
   height: 70vh;
   border: none;
