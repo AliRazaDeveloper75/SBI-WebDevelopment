@@ -4,8 +4,8 @@ console.log("this is my js file.");
 // data
 
 let a = "ali"; //string
+const b = "raza"; //intiger
 var c = true; // boolean
-const b = 12321; //intiger
 const d = null; //null
 const e = 9007199254740992n; //big int
 
@@ -18,4 +18,31 @@ console.log(c, typeof c);
 // variable
 const FirstName = "Ali ";
 let LastName = "Raza ";
-var LastName = "Raza ";
+var astName = "Raza ";
+
+// functions
+
+function myfirstfun() {
+  console.log("my function is working...");
+}
+
+const myaerrow = () => {
+  console.log("my arrow function is working...");
+};
+const submit = () => {
+  console.log("your form submit successfully.");
+  alert("your form submit successfully.");
+};
+
+myfirstfun();
+myaerrow();
+
+//
+const multiplyComplex = () => {
+  const aa = "22";
+  const bb = "50";
+  const result = aa + bb;
+  console.log(result);
+};
+
+multiplyComplex();
