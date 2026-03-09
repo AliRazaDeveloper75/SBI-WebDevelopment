@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my first website</title>
+    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- icons link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="navbar">
+      <div class="left">
+        <img src="mediafiles/logo.png" class="mylogo" />
+      </div>
+      <div class="right">
+        <button>Home</button>
+        <button>
+          <a href="about.html"> About </a>
+        </button>
+        <button>Services</button>
+        <button>Products</button>
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!-- hero section -->
+    <div class="hero-sec">
+      <div class="sec-left">
+        <h1 class="heading">
+          welcome to my website. All-in-One I.T. Services for Scalable, Secure,
+          Smart Solutions.
+        </h1>
+        <p class="detail">
+          A web service is a standardized, platform-independent software system
+          that enables machine-to-machine interaction and data exchange over a
+          network (typically the internet) using protocols like HTTP
+        </p>
+
+        <a href="test.html" class="a-tag-btn"> My Test Page </a>
+        <a href="https://www.google.com/">
+          <button class="h-btn">Go To Google</button>
+        </a>
+      </div>
+      <div class="sec-right">
+        <div class="c-form">
+          <h1>Book You Appointement!</h1>
+          <div class="input-flelds">
+            <div class="input-div">
+              <label>full name</label>
+              <input type="text" placeholder="full name" />
+            </div>
+            <div class="input-div">
+              <label>Email Address</label>
+              <input type="email" placeholder="email address" />
+            </div>
+            <div class="input-div">
+              <label>Phone Number</label>
+              <input type="number" placeholder="+923008979564 " />
+            </div>
+            <div class="input-div">
+              <label>Subject</label>
+              <input type="text" placeholder="Subject" />
+            </div>
+
+            <div class="input-div">
+              <label>Message</label>
+              <textarea
+                class="msg"
+                placeholder="Enter your message here"
+              ></textarea>
+            </div>
+            <div class="input-div">
+              <button onclick="submit()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <section class="table-sec">
+      <div>
+        <h1>Final Term Marks Sheet</h1>
+      </div>
+      <table>
+        <!-- table headings -->
+        <tr>
+          <th>Sr#.</th>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Grade</th>
+          <th>Total Mard</th>
+          <th>Obt. Marks</th>
+        </tr>
+
+        <!-- table content -->
+        <tr>
+          <td>1</td>
+          <td>Alishba</td>
+          <td>BSCS</td>
+          <td>A</td>
+          <td>4.00</td>
+          <td>3.20</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Umar</td>
+          <td>BSSE 4th</td>
+          <td>A</td>
+          <td>4.00</td>
+          <td>3.20</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Hadeed</td>
+          <td>BSCS</td>
+          <td>A</td>
+          <td>4.00</td>
+          <td>3.20</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Namaira</td>
+          <td>BS Phy</td>
+          <td>A</td>
+          <td>4.00</td>
+          <td>3.20</td>
+        </tr>
+      </table>
+    </section>
+    <!-- grig -->
+    <div class="g-sec">
+      <div class="c-one">sec 01</div>
+      <div class="c-one">sec 02</div>
+      <div class="c-one">sec 03</div>
+      <div class="c-one">sec 04</div>
+      <div class="c-one">sec 05</div>
+      <div class="c-one">sec 05</div>
+      <div class="c-one">sec 05</div>
+      <div class="c-one">sec 05</div>
+      <div class="c-one">sec 05</div>
+      <div class="c-one">sec 05</div>
+      <div class="c-one">sec 05</div>
+      <div class="c-one">sec 05</div>
+    </div>
+    <!-- courses cards -->
+    <div class="cards">
+      <!-- card 01 -->
+      <div class="card">
+        <img src="mediafiles/sbi.png" alt="" />
+        <h1 class="title">Web Development Course</h1>
+        <p class="desc">
+          This is Web Development Course. We Make Website. Frontend & Backend
+          using JS.
+        </p>
+        <h2 class="price">PKR 599/-</h2>
+        <button class="btn">Buy Now</button>
+      </div>
+      <!-- card 02 -->
+      <div class="card">
+        <img src="mediafiles/sbi.png" alt="" />
+        <h1 class="title">Web Development Course</h1>
+        <p class="desc">
+          This is Web Development Course. We Make Website. Frontend & Backend
+          using JS.
+        </p>
+        <h2 class="price">PKR 599/-</h2>
+        <button class="btn">Buy Now</button>
+      </div>
+      <!-- card 03 -->
+      <div class="card">
+        <img src="mediafiles/sbi.png" alt="" />
+        <h1 class="title">Web Development Course</h1>
+        <p class="desc">
+          This is Web Development Course. We Make Website. Frontend & Backend
+          using JS.
+        </p>
+        <h2 class="price">PKR 599/-</h2>
+        <button class="btn">Buy Now</button>
+      </div>
+      <!-- card 04 -->
+      <div class="card">
+        <img src="mediafiles/sbi.png" alt="" />
+        <h1 class="title">Web Development Course</h1>
+        <p class="desc">
+          This is Web Development Course. We Make Website. Frontend & Backend
+          using JS.
+        </p>
+        <h2 class="price">PKR 599/-</h2>
+        <button class="btn">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- contact section  -->
+    <div class="container">
+      <h1>Healthcare Staffing Without Delays or Compromise</h1>
+      <p>
+        Join Amica Connect today and experience healthcare staffing that
+        actually works for providers, professionals, and patients.
+      </p>
+      <div class="sub-container">
+        <button>Contact Us</button>
+        <button>Explore More!</button>
+      </div>
+    </div>
+
+    <!-- yt video sec -->
+    <div class="yt-sec">
+      <div class="cont">
+        <h1>Our Demo Class</h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita
+          animi aliquid cumque ipsa quam explicabo nostrum beatae deserunt
+          nulla, ipsum in neque. Blanditiis, facere quasi. Lorem ipsum dolor,
+          sit amet consectetur adipisicing elit. Dolore architecto voluptatem
+          tempora molestias sapiente nisi magnam, unde ut fuga. Suscipit,
+          voluptatibus amet! Veniam, beatae temporibus.
+        </p>
+      </div>
+      <div class="vid">
+        <iframe
+          class="yt-vid"
+          src="https://www.youtube.com/embed/R3GfuzLMPkA"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer-sec">
+      <div class="tabs">
+        <div class="section1">
+          <h1>Logo</h1>
+          <p>
+            Amica Connect is a digital marketplace connecting patients, clinics,
+            and healthcare professionals. We do not provide medical advice or
+            treatment.
+          </p>
+        </div>
+        <!-- menu tabs -->
+        <div class="section2">
+          <h1>Useful Links</h1>
+          <div class="btn-align">
+            <a> Home</a>
+            <a> About</a>
+            <a> Contact Us</a>
+            <a> Our Services</a>
+          </div>
+        </div>
+        <!-- menu tabs -->
+        <div class="section2">
+          <h1>Useful Links</h1>
+          <div class="btn-align">
+            <a> Home</a>
+            <a> About</a>
+            <a> Contact Us</a>
+            <a> Our Services</a>
+          </div>
+        </div>
+        <!-- menu tabs -->
+        <div class="section2">
+          <h1>Contact Us</h1>
+          <div class="btn-align">
+            <div class="p-icon">
+              <i class="fa-solid fa-phone"></i>
+              <p>+92 304 3309005</p>
+            </div>
+            <div class="p-icon">
+              <i class="fa-brands fa-square-whatsapp"></i>
+              <p>+92 304 3309005</p>
+            </div>
+            <div class="p-icon">
+              <i class="fa-solid fa-envelopes-bulk"></i>
+              <p>myemail@gmail.com</p>
+            </div>
+            <div class="p-icon">
+              <i class="fa-solid fa-map"></i>
+              <p>Gulberg III, Lahore Pakistan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <!-- <br/>
+        <hr class="line"/>
+        <br/> -->
+        © Copyright 2015-2025 ECOMSY (SMC-PRIVATE) LIMITED. All Rights Reserved.
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
